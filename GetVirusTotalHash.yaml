@@ -99,13 +99,6 @@ components:
                                     type: string
                                 last_seen_itw_url:
                                     type: string
-                                total_votes:
-                                    type: object
-                                    properties:
-                                        harmless:
-                                            type: integer
-                                        malicious:
-                                            type: integer
                                 last_analysis_stats:
                                     type: object
                                     properties:
@@ -119,4 +112,3 @@ components:
                                             type: integer
                                         timeout:
                                             type: integer
-
