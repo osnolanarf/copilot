@@ -18,4 +18,4 @@ Descriptor:
 SkillGroups:
   - Format: API
     Settings:
-      OpenApiSpecUrl: https://raw.githubusercontent.com/osnolanarf/copilot/main/GetVirusTotalHash.yaml
+      OpenApiSpecUrl: https://raw.githubusercontent.com/osnolanarf/copilot/main/CustomPlugins/GetVirusTotalHash.yaml
