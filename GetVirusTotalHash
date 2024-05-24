@@ -1,0 +1,122 @@
+openapi: 3.0.0
+
+info:
+    title: Get Virus Total Hash Information
+    description: Get Information about a hash from Virus Total
+    # Examples
+    # Can you summarize the Virus Total information for the hash 44d88612fea8a8f36de82e1278abb02f?
+    # Can you output a table I can export of the reputation information from all the engines from Virus Total for the hash 44d88612fea8a8f36de82e1278abb02f?
+    # Which engines detected the hash 44d88612fea8a8f36de82e1278abb02f as malicious from Virus Total?
+    version: "v1"
+
+servers:
+    - url: https://www.virustotal.com/api
+
+paths:
+    /v3/files/{hash}:
+        get:
+            operationId: getVirusTotalHash
+            summary: Get Virus Total Hash Information for a particular hash.
+            parameters:
+                - in: path
+                  name: hash
+                  schema:
+                      type: string
+                  required: true
+                  description: The hash to lookup
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/getVTHashResponse"
+
+components:
+    schemas:
+        getVTHashResponse:
+            type: object
+            properties:
+                data:
+                    type: object
+                    properties:
+                        attributes:
+                            type: object
+                            properties:
+                                last_analysis_date:
+                                    type: integer
+                                last_analysis_results:
+                                    type: object
+                                    additionalProperties:
+                                        type: object
+                                        properties:
+                                            category:
+                                                type: string
+                                            engine_name:
+                                                type: string
+                                            method:
+                                                type: string
+                                            result:
+                                                type: string
+                                reputation:
+                                    type: integer
+                                times_submitted:
+                                    type: integer
+                                total_votes:
+                                    type: object
+                                    properties:
+                                        harmless:
+                                            type: integer
+                                        malicious:
+                                            type: integer
+                                last_modification_date:
+                                    type: integer
+                                first_submission_date:
+                                    type: integer
+                                sha256:
+                                    type: string
+                                md5:
+                                    type: string
+                                sha1:
+                                    type: string
+                                size:
+                                    type: integer
+                                tags:
+                                    type: array
+                                    items:
+                                        type: string
+                                unique_sources:
+                                    type: integer
+                                type_description:
+                                    type: string
+                                times_downloaded:
+                                    type: integer
+                                first_seen_itw_date:
+                                    type: integer
+                                last_seen_itw_date:
+                                    type: integer
+                                first_seen_itw_url:
+                                    type: string
+                                last_seen_itw_url:
+                                    type: string
+                                total_votes:
+                                    type: object
+                                    properties:
+                                        harmless:
+                                            type: integer
+                                        malicious:
+                                            type: integer
+                                last_analysis_stats:
+                                    type: object
+                                    properties:
+                                        harmless:
+                                            type: integer
+                                        malicious:
+                                            type: integer
+                                        suspicious:
+                                            type: integer
+                                        undetected:
+                                            type: integer
+                                        timeout:
+                                            type: integer
+
